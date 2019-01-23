@@ -34,11 +34,11 @@ class Week1(object):
         arr = df_filter.values
         index_names = df_filter.index
         col_names = df_filter.columns
-        #  Get indices where such threshold is crossed; avoid diagonal elems
+        #  Get indices where outliers are
         R,C = np.where(np.logical_or(arr>1,arr<0))
         # Arrange those in columns and put out as a dataframe
         out_arr = np.column_stack((index_names[R],col_names[C],arr[R,C]))
-        df_outliers = pd.DataFrame(out_arr,columns=[['row_name','col_name','value']])
+        df_outliers = pd.DataFrame(out_arr,columns=[['row_name','col_name','outliers']])
         print(df_outliers)
 
 
